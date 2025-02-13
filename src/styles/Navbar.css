@@ -1,0 +1,61 @@
+.navbar-nav .nav-link {
+    font-size: 14px;
+  }
+  
+  .search-bar {
+    width: 250px;
+  }
+  
+  @media (max-width: 992px) {
+    .search-bar {
+      width: 100%;
+    }
+  }
+
+ /* Style for the mega menu */
+.mega-menu {
+  position: relative;
+}
+
+.mega-menu .mega-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  top: 100%; 
+}
+
+.mega-menu:hover .mega-content {
+  display: block;
+}
+
+.mega-content .row {
+  display: flex;
+}
+
+.dropdown-header {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  background-color: #f8f9fa;
+  display: inline-block;
+}
+
+.dropdown-item {
+  font-size: 14px;
+  color: #555;
+  display: block;
+}
+
+.dropdown-item:hover {
+  color: #d63384;
+  font-weight: bold;
+}
+
+.navbar {
+  position: relative;
+  z-index: 1000;
+}
