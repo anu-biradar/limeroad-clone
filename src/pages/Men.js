@@ -1,17 +1,18 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
+import axios from "axios"
 
 const Men = () => {
 
     const [menProducts, setMenProducts] = useState([]);
 
     useEffect(() => {
-      fetch("/products.json")
-        .then((res) => res.json())
-        .then((data) =>
-          setMenProducts(data.products.filter((item) => item.category.gender === "Men"))
-        )
+      axios
+        .get("/products.json")
+        .then((res) => {
+         setMenProducts(res.data.products.filter((item) => item.category.gender === "Men"))
+        })
         .catch((error) => console.error("Error fetching products:", error));
     }, []);
 

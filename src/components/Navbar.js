@@ -1,9 +1,13 @@
-import React from "react";
+import React  from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css"; 
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
 
 const Navbar = () => {
+
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
       <div className="container-fluid px-4">
@@ -152,11 +156,34 @@ const Navbar = () => {
               </Link>
             </li>
 
-            <li className="nav-item text-center">
-              <Link className="nav-link text-dark fs-6 px-4" to="/profile">
+            <li
+              className="nav-item text-center position-relative"
+              onMouseEnter={() => setShowProfileMenu(true)}
+              onMouseLeave={() => setShowProfileMenu(false)}
+            >
+              <Link className="nav-link text-dark fs-6 px-4" to="#">
                 <i className="bi bi-person-circle d-block"></i>
-              <span style={{ fontSize: "10px",fontFamily: "Poppins, sans-serif" }} className="fs-10">PROFILE</span>               
+                <span style={{ fontSize: "10px", fontFamily: "Poppins, sans-serif" }} className="fs-10">
+                  PROFILE
+                </span>
               </Link>
+
+              {showProfileMenu && (
+                <div className="profile-dropdown">
+                  <h6 className="dropdown-title">WELCOME!</h6>
+                  <p>To view account details</p>
+                  <Link to="/login" className="btn btn-danger btn-sm w-100">
+                    LOGIN
+                  </Link>
+                  <hr />
+                  <Link to="/orders" className="dropdown-item">ORDERS</Link>
+                  <Link to="/return" className="dropdown-item">RETURN REPLACEMENT</Link>
+                  <Link to="/credits" className="dropdown-item">LR CREDITS</Link>
+                  <hr />
+                  <Link to="/support" className="dropdown-item">CUSTOMER SUPPORT</Link>
+                  <Link to="/faq" className="dropdown-item">FAQ & HELP</Link>
+                </div>
+              )}
             </li>
 
           </ul>
