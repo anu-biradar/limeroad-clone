@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+/* Ensure the main layout fills the screen */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Push the footer to the bottom */
+.main-content {
+  flex: 1;
+}

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; 
 
 const CardSection = () => {
   const navigate = useNavigate();
 
   const [likes, setLikes] = useState(
-    Array(8).fill(false) // Store like status for each card
+    Array(8).fill(false) 
   );
 
   const cards = [
@@ -37,42 +37,40 @@ const CardSection = () => {
       followers: "6K",
       initialLikes: 28,
     },
-    {
-      id: 5,
-      title: "SUMMER ESSENTIALS",
-      image: "https://n-img0.junaroad.com/stories/story_p_67977690f77e5bd0c06f3ba1-1737981590.jpeg",
-      followers: "7K",
-      initialLikes: 30,
-    },
-    {
-      id: 6,
-      title: "WESTERN CHIC",
-      image: "https://n-img0.junaroad.com/stories/story_p_678f80f3429fe29cb86be116-1738151329.jpeg",
-      followers: "9K",
-      initialLikes: 25,
-    },
-    {
-      id: 7,
-      title: "TRADITIONAL LOOKS",
-      image: "https://n-img0.junaroad.com/stories/story_p_679215517c7328328b814ec8-1738899358.jpeg",
-      followers: "8K",
-      initialLikes: 35,
-    },
-    {
-      id: 8,
-      title: "STYLISH WINTER",
-      image: "https://n-img3.junaroad.com/stories/story_p_67921199c8c932ec03c4b2c6-1737626627.jpeg",
-      followers: "12K",
-      initialLikes: 40,
-    },
+    // {
+    //   id: 5,
+    //   title: "SUMMER ESSENTIALS",
+    //   image: "https://n-img0.junaroad.com/stories/story_p_67977690f77e5bd0c06f3ba1-1737981590.jpeg",
+    //   followers: "7K",
+    //   initialLikes: 30,
+    // },
+    // {
+    //   id: 6,
+    //   title: "WESTERN CHIC",
+    //   image: "https://n-img0.junaroad.com/stories/story_p_678f80f3429fe29cb86be116-1738151329.jpeg",
+    //   followers: "9K",
+    //   initialLikes: 25,
+    // },
+    // {
+    //   id: 7,
+    //   title: "TRADITIONAL LOOKS",
+    //   image: "https://n-img0.junaroad.com/stories/story_p_679215517c7328328b814ec8-1738899358.jpeg",
+    //   followers: "8K",
+    //   initialLikes: 35,
+    // },
+    // {
+    //   id: 8,
+    //   title: "STYLISH WINTER",
+    //   image: "https://n-img3.junaroad.com/stories/story_p_67921199c8c932ec03c4b2c6-1737626627.jpeg",
+    //   followers: "12K",
+    //   initialLikes: 40,
+    // },
   ];
 
-  // Handle card click (Navigate to details page)
   const handleCardClick = (id) => {
-    navigate(`/details/${id}`); // Redirect to details page
+    navigate(`/products/${id}`); 
   };
 
-  // Handle like button
   const handleLike = (index) => {
     setLikes((prevLikes) => {
       const newLikes = [...prevLikes];
@@ -81,7 +79,7 @@ const CardSection = () => {
     });
   };
 
-  // Handle share functionality
+
   const handleShare = (title, image) => {
     const text = `Check this out: ${title}`;
     const url = encodeURIComponent(image);
@@ -108,7 +106,7 @@ const CardSection = () => {
                   <span
                     className={likes[index] ? "text-danger" : "text-muted"}
                     onClick={(e) => {
-                      e.stopPropagation(); // Prevent triggering card click
+                      e.stopPropagation(); 
                       handleLike(index);
                     }}
                   >
@@ -117,7 +115,7 @@ const CardSection = () => {
                   <span
                     className="text-success"
                     onClick={(e) => {
-                      e.stopPropagation(); // Prevent triggering card click
+                      e.stopPropagation(); 
                       handleShare(card.title, card.image);
                     }}
                   >
