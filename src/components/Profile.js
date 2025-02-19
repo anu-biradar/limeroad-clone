@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/CategorySection.css"
 
-const CategorySection = ({ setGender, setType }) => {
+const Profile = ({ setGender, setType }) => {
   const [selectedCategory, setSelectedCategory] = useState("Women"); 
 
   const categoryData = {
@@ -21,7 +21,6 @@ const CategorySection = ({ setGender, setType }) => {
       { label: "Jeans", img: "/assets/men_jeans.avif", link: "Jeans" },
       { label: "Trousers", img: "/assets/men_trousers.avif", link: "Suits" },
       { label: "Formal Shoes", img: "/assets/men_footwear.avif", link: "Formal Shoes" },
-
     ],
     Kids: [
       { label: "My Feed", img: "/assets/my_feed.avif", link: "My Feed" },
@@ -77,4 +76,4 @@ const CategorySection = ({ setGender, setType }) => {
   );
 };
 
-export default CategorySection;
+export default Profile;

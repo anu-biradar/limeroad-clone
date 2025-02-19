@@ -7,11 +7,10 @@ const Payment = () => {
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
 
-  // Calculate totals
   const totalBeforeDiscount = cart.reduce((acc, item) => acc + item.before_disc * item.quantity, 0);
   const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const totalSavings = totalBeforeDiscount - totalPrice;
-  const shippingCharges = totalPrice > 500 ? 0 : 50; // Free shipping over ₹500
+  const shippingCharges = totalPrice > 500 ? 0 : 50; 
   const amountPayable = totalPrice + shippingCharges;
 
   const handlePayment = () => {
@@ -25,8 +24,6 @@ const Payment = () => {
   return (
     <div className="payment-container">
       <h2>Payment Details</h2>
-
-      {/* Order Summary */}
       <div className="order-summary">
         <h3>Order Summary</h3>
         <p><span>Total Price:</span> ₹{totalBeforeDiscount}</p>
@@ -36,7 +33,7 @@ const Payment = () => {
         <p className="summary-total"><span>Amount Payable:</span> ₹{amountPayable}</p>
       </div>
 
-      {/* Payment Options */}
+
       <h3>Select Payment Method</h3>
       <div className="payment-options">
         {["Credit/Debit Card", "UPI", "Net Banking", "Cash on Delivery"].map((method) => (
@@ -52,12 +49,11 @@ const Payment = () => {
         ))}
       </div>
 
-      {/* Pay Now Button */}
+
       <button className="pay-now-btn" onClick={handlePayment}>
         Pay Now
       </button>
 
-      {/* Payment Success Message */}
       {paymentSuccess && (
         <div className="payment-success">
           <h3>Payment Successful!</h3>

@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "../components/Carousel";
 import Navbar from "../components/Navbar";
-import CategorySection from "../components/CategorySection";
+import Profile from "../components/Profile";
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
 import { useState } from "react";
@@ -14,7 +14,7 @@ const Home = () => {
         <div>
             <Navbar />
 
-            <CategorySection setGender={setSelectedGender} setType={setSelectedType} />
+            <Profile setGender={setSelectedGender} setType={setSelectedType} />
 
             <Carousel />
 
