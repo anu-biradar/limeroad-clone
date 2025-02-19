@@ -2,7 +2,7 @@
     "products": [
       {
         "id": 1,
-        "brandimage":"https://n-img0.junaroad.com/stories/story_p_67921b3a20996709447c021d-1739363111.jpeg",
+        "sellerimage":"https://n-img0.junaroad.com/stories/story_p_67921b3a20996709447c021d-1739363111.jpeg",
         "image": ["https://cdn-images.farfetch-contents.com/16/94/70/11/16947011_33930674_600.jpg"],
         "title": "Logo Print Round-Neck Sweatshirt",
         "brand": "Canary London",
@@ -19,7 +19,7 @@
       },
       {
         "id": 2,
-        "brandimage":"https://n-img0.junaroad.com/stories/story_p_67921b3a20996709447c021d-1739363111.jpeg",
+        "sellerimage":"https://n-img0.junaroad.com/stories/story_p_67921b3a20996709447c021d-1739363111.jpeg",
         "image": ["https://n-img0.junaroad.com/uiproducts/21717878/zoom_0-1738678008.jpg"],
         "title": "Men's Slim Fit Shirt",
         "brand": "Peter England",
@@ -36,7 +36,7 @@
       },
       {
         "id": 3,
-        "brandimage":"https://n-img0.junaroad.com/stories/story_p_67921b3a20996709447c021d-1739363111.jpeg",
+        "sellerimage":"https://n-img0.junaroad.com/stories/story_p_67921b3a20996709447c021d-1739363111.jpeg",
         "image": ["https://n-img0.junaroad.com/uiproducts/19615226/zoom_0-1680068434.jpg"],
         "title": "Men's Cotton Polo T-Shirt",
         "brand": "U.S. Polo Assn.",
@@ -245,7 +245,7 @@
       },
       {
         "id": 16,
-        "brandimage":"https://n-img1.junaroad.com/stories/story_p_67af21f9c8c932f9b574896c-1739531949.jpeg",
+        "sellerimage":"https://n-img1.junaroad.com/stories/story_p_67af21f9c8c932f9b574896c-1739531949.jpeg",
         "image": ["https://n-img0.junaroad.com/uiproducts/20012912/zoom_0-1687950120.jpg"],
         "title": "Women's Straight Kurti",
         "brand": "BIBA",
