@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "../styles/Cart.css";
+import Footer from "../components/Footer";
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const totalBeforeDiscount = cart.reduce((acc, item) => acc + item.before_disc * item.quantity, 0);
@@ -57,11 +59,12 @@ const Cart = () => {
               <p className="summary-item"><span>You Save:</span> ₹{totalSavings}</p>
               <hr />
               <p className="summary-total"><span>Amount Payable:</span> ₹{totalPrice}</p>
-              <button className="buy-now-btn">BUY NOW</button>
+              <button className="buy-now-btn" onClick={() => navigate("/payment")}>Proceed to Payment</button>
             </div>
           </div>
         )}
       </div>
+      <Footer/>
     </div>
   );
 };

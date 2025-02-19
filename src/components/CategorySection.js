@@ -8,9 +8,8 @@ const CategorySection = ({ setGender, setType }) => {
     Women: [
       { label: "My Feed", img: "/assets/my_feed.avif", link: "My Feed" },
       { label: "Kurtas", img: "/assets/kurtas.avif", link: "Kurtas" },
-      { label: "Tops", img: "/assets/tops.avif", link: "Tshirt" },
-      { label: "Dresses", img: "/assets/dresses.avif", link: "Shirts" },
       { label: "Tops", img: "/assets/tops.avif", link: "Tops" },
+      { label: "Dresses", img: "/assets/dresses.avif", link: "Shirts" },
       { label: "Saree", img: "/assets/sarees.avif", link: "Saree" },
       { label: "Bags", img: "/assets/bags.avif", link: "Bags" },
       { label: "Footwear", img: "/assets/footwear.avif", link: "Footwear" },
@@ -22,16 +21,16 @@ const CategorySection = ({ setGender, setType }) => {
       { label: "Jeans", img: "/assets/men_jeans.avif", link: "Jeans" },
       { label: "Trousers", img: "/assets/men_trousers.avif", link: "Suits" },
       { label: "Formal Shoes", img: "/assets/men_footwear.avif", link: "Formal Shoes" },
-      // { label: "Sandals", img: "/assets/m_scandals.jpg", link: "Sandals" },
-      // { label: "Watch", img: "/assets/m_watch.jpg", link: "Watch" },
+
     ],
     Kids: [
       { label: "My Feed", img: "/assets/my_feed.avif", link: "My Feed" },
       { label: "Frocks", img: "/assets/girls_frocks.avif", link: "Frocks" },
       { label: "T-Shirts", img: "/assets/boys_t_shirts.avif", link: "T-Shirts" },
       { label: "Boys Shirts", img: "/assets/boys_shirts.avif", link: "Shirts" },
-      { label: "Bottom Wear", img: "/assets/boys_bottom.avif", link: "Twin Sets" },
+      { label: "Bottom Wear", img: "/assets/boys_bottom.avif", link: "Shorts" },
     ],
+    
   };
 
   return (
@@ -50,6 +49,7 @@ const CategorySection = ({ setGender, setType }) => {
                 setType("My Feed"); 
               }}  >
               {category}
+              {/* {category === "Kids" && <span className="new-badge">NEW</span>} */}
             </button>
           </div>
         ))}
@@ -69,6 +69,8 @@ const CategorySection = ({ setGender, setType }) => {
               <p className="mt-2">{item.label}</p>
             </button>
           </div>
+
+          
         ))}
       </div>
     </div>

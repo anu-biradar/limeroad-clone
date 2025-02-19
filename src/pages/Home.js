@@ -3,24 +3,24 @@ import Carousel from "../components/Carousel";
 import Navbar from "../components/Navbar";
 import CategorySection from "../components/CategorySection";
 import Banner from "../components/Banner";
-import CardSection from "../components/Cardsection";
 import Footer from "../components/Footer";
 import { useState } from "react";
+import TrendCards from "../components/TrendCards";
 
 const Home = () => {
-    const [gender, setGender] = useState("Women");
-    const [type, setType] = useState("My Feed"); 
+    const [selectedGender, setSelectedGender] = useState("Women");
+    const [selectedType, setSelectedType] = useState("My Feed");
     return(
         <div>
             <Navbar />
 
-            <CategorySection setGender={setGender} setType={setType}/>
+            <CategorySection setGender={setSelectedGender} setType={setSelectedType} />
 
             <Carousel />
 
             <Banner />
 
-            <CardSection />
+            <TrendCards selectedGender={selectedGender} selectedType={selectedType} />
 
             <Footer/>
         </div>

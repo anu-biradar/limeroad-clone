@@ -10,7 +10,9 @@ const ProductDetail = () => {
   const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const [selectedSize, setSelectedSize] = useState(null); 
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [sortOption, setSortOption] = useState("Relevance");
+  
 
   useEffect(() => {
     fetch("/products.json")
@@ -20,45 +22,76 @@ const ProductDetail = () => {
         setProduct(foundProduct);
 
         if (foundProduct) {
-          const filteredProducts = data.products.filter(
-            (p) =>
-              p.category.type === foundProduct.category.type &&
-              p.id !== foundProduct.id
+          let filteredProducts = data.products.filter(
+            (p) => p.category.type === foundProduct.category.type && p.id !== foundProduct.id
           );
+
+          if (sortOption === "High Price") {
+            filteredProducts.sort((a, b) => b.price - a.price);
+          } else if (sortOption === "Low Price") {
+            filteredProducts.sort((a, b) => a.price - b.price);
+          } else if (sortOption === "Discounts") {
+            filteredProducts.sort((a, b) => b.offer_percent - a.offer_percent);
+          }
+
           setRelatedProducts(filteredProducts);
         }
       })
       .catch((error) => console.error("Error fetching product:", error));
-  }, [productId]);
+        }, [productId, sortOption]);
 
-  if (!product) {
-    return <div>Loading...</div>;
-  }
+        if (!product) {
+          return <div>Loading...</div>;
+        }
 
-
-  const handleAddToCart = () => {
-    if (!selectedSize) {
-      alert("Please select a size before adding to cart.");
-      return;
-    }
-    addToCart(product, selectedSize);
-    alert("Item added to cart successfully!");
-  };
+        const handleAddToCart = () => {
+          if (!selectedSize) {
+            alert("Please select a size before adding to cart.");
+            return;
+          }
+          addToCart(product, selectedSize);
+          alert("Item added to cart successfully!");
+        };
 
   return (
     <div>
       <Navbar />
       <div className="container mt-4 product-detail-container">
         <div className="row">
+          <div className="col-md-3 sidebar">
+            <div className="filter-section">
+              <h5>FILTER & SORT</h5>
+              <hr />
+              <div className="sort-by">
+                <h6>Sort by</h6>
+                {['Relevance', 'Discounts', 'High Price', 'Low Price'].map((option) => (
+                  <label key={option}>
+                    <input
+                      type="radio"
+                      name="sort"
+                      checked={sortOption === option}
+                      onChange={() => setSortOption(option)}
+                    /> {option}
+                  </label>
+                ))}
+              </div>
+              <hr />
+              <div className="filter-category">
+                {['Price', 'Discounts', 'Color', 'Size', 'Brand'].map((filter) => (
+                  <p key={filter}>{filter} <span>+</span></p>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="col-md-6">
             <img src={product.image[0]} className="img-fluid product-image" alt={product.title} />
           </div>
 
-          <div className="col-md-6 product-info">
+          <div className="col-md-3 product-info">
             <h2 className="product-title">{product.title}</h2>
             <h4 className="brand-name">Brand: {product.brand}</h4>
 
-            {/* Size Selection */}
             <div className="size-selection">
               <h5>Select Size</h5>
               <div className="size-options">

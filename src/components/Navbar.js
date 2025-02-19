@@ -46,7 +46,7 @@ const Navbar = () => {
                 <div className="row">
                   <div className="col-md-3">
                     <h6 className="dropdown-header">Ethnic Wear</h6>
-                    <Link className="dropdown-item" to="/products/women/kurta-kurtis">Kurta Kurtis</Link>
+                    <Link className="dropdown-item" to="/products/women/kurtas">Kurta Kurtis</Link>
                     <Link className="dropdown-item" to="/products/women/sarees">Sarees</Link>
                     <Link className="dropdown-item" to="/products/women/ethnic-sets">Ethnic Sets</Link>
                   </div>
@@ -171,13 +171,15 @@ const Navbar = () => {
                 <i className="bi bi-search d-block"></i>
               <span style={{ fontSize: "10px",fontFamily: "Poppins, sans-serif" }} className="fs-10">SEARCH</span>
               </Link>
-
             </li>
 
-            <li className="nav-item text-center">
-              <Link className="nav-link text-dark  fs-6 px-4" to="/cart">
-                <i className="bi bi-cart d-block"></i>
-              <span style={{ fontSize: "10px",fontFamily: "Poppins, sans-serif" }} className="fs-10">CART</span>
+            <li className="nav-item text-center position-relative">
+              <Link className="nav-link text-dark fs-6 px-4" to="/cart">
+                <i className="bi bi-cart d-block position-relative"></i>
+                <span style={{ fontSize: "10px", fontFamily: "Poppins, sans-serif" }} className="fs-10">CART</span>
+                {cart.length > 0 && (
+                  <span className="cart-badge">{cart.length}</span>
+                )}
               </Link>
             </li>
 

@@ -1,0 +1,112 @@
+.trend-cards-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .trend-card {
+    width: 250px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .trend-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .image-section {
+    position: relative;
+    width: 100%;
+  }
+  
+  .main-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .side-images {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .side-images img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+  }
+  
+  .trend-info {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .likes-share {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .trend-products {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .product-card {
+    width: 200px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .before-discount {
+    text-decoration: line-through;
+    color: gray;
+  }
+  
+  .discount {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .back-button {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .back-button:hover {
+    background-color: #cc0000;
+  }
+  
