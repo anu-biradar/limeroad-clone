@@ -22,7 +22,7 @@ const Cart = () => {
           <p className="empty-cart">Cart is empty</p>
         ) : (
           <div className="cart-layout">
-            {/* Left Side: Cart Items */}
+
             <div className="cart-items">
               {cart.map((item) => (
                 <div key={item.id} className="cart-item">
@@ -35,7 +35,6 @@ const Cart = () => {
                     </Link>
                     <p className="cart-brand">BY {item.brand}</p>
 
-                    {/* Quantity Counter */}
                     <div className="quantity-container">
                       <button onClick={() => updateQuantity(item.id, item.selectedSize, item.quantity - 1)}>-</button>
                       <span className="quantity">{item.quantity}</span>
@@ -50,7 +49,6 @@ const Cart = () => {
               ))}
             </div>
 
-            {/* Right Side: Summary Section */}
             <div className="cart-summary">
               <h3>Summary</h3>
               <p className="summary-item"><span>Total Price:</span> ₹{totalBeforeDiscount}</p>

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; 
 import "../styles/TrendCards.css";
 
 const TrendCards = ({ selectedGender, selectedType }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedTrend, setSelectedTrend] = useState(null);
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate(); 
 
   const trends = [
     {
@@ -14,7 +14,7 @@ const TrendCards = ({ selectedGender, selectedType }) => {
       mainImage:
         "https://n-img3.junaroad.com/stories/story_p_67af1e8af77e5b3e2328275c-1739534842.jpeg",
       sideImages: ["/assets/tie_dye_1.jpg", "/assets/tie_dye_2.jpg"],
-      followers: "15K",
+      followers: "5K",
       likes: 36,
     },
     {
@@ -23,7 +23,7 @@ const TrendCards = ({ selectedGender, selectedType }) => {
       mainImage:
         "https://n-img4.junaroad.com/stories/story_p_67af0af92099674a682885b1-1739525987.jpeg",
       sideImages: ["/assets/one_shoulder_1.jpg", "/assets/one_shoulder_2.jpg"],
-      followers: "15K",
+      followers: "20K",
       likes: 38,
     },
     {
@@ -32,7 +32,7 @@ const TrendCards = ({ selectedGender, selectedType }) => {
       mainImage:
         "https://n-img1.junaroad.com/stories/story_p_67a05d43c8c932ec03d29bdc-1739176108.jpeg",
       sideImages: ["/assets/boxy_tees_1.jpg", "/assets/boxy_tees_2.jpg"],
-      followers: "15K",
+      followers: "30K",
       likes: 20,
     },
     {
@@ -41,7 +41,7 @@ const TrendCards = ({ selectedGender, selectedType }) => {
       mainImage:
         "https://n-img0.junaroad.com/stories/story_p_6790d9a2c8c932ec03c38d41-1738909649.jpeg",
       sideImages: ["/assets/hyper_bright_1.jpg", "/assets/hyper_bright_2.jpg"],
-      followers: "15K",
+      followers: "25K",
       likes: 16,
     },
   ];

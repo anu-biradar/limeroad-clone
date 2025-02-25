@@ -145,7 +145,7 @@
 .related-products-grid {
     display: flex;
     gap: 15px;
-    overflow-x: auto;
+    overflow-x: hidden;
     padding-bottom: 10px;
 }
 
