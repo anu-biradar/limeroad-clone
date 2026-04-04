@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getOrders } from '../api/orders';
+import { getUploadUrl } from '../api/axios';
 import './Orders.css';
 
 export default function Orders() {
@@ -71,7 +72,7 @@ export default function Orders() {
                         {item.productId?.images?.[0] ? (
                           <img
                             className="order-item-image"
-                            src={`http://localhost:5000/uploads/${item.productId.images[0]}`}
+                            src={getUploadUrl(item.productId.images[0])}
                             alt={item.productId?.title}
                           />
                         ) : (

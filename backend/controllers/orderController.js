@@ -1,6 +1,9 @@
 const Order = require("../models/Order");
 const Cart = require("../models/Cart");
 
+const FREE_DELIVERY_THRESHOLD = 499;
+const DELIVERY_FEE = 49;
+
 // PLACE ORDER
 exports.placeOrder = async (req, res) => {
   try {
@@ -20,6 +23,10 @@ exports.placeOrder = async (req, res) => {
     cart.products.forEach((item) => {
       totalAmount += item.productId.price * item.quantity;
     });
+
+    if (totalAmount > 0 && totalAmount < FREE_DELIVERY_THRESHOLD) {
+      totalAmount += DELIVERY_FEE;
+    }
 
     const order = new Order({
       userId,

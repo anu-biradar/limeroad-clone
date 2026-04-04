@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCart, removeFromCart } from '../api/cart';
 import { placeOrder } from '../api/orders';
+import { getUploadUrl } from '../api/axios';
 import './Cart.css';
+
+const FREE_DELIVERY_THRESHOLD = 499;
+const DELIVERY_FEE = 49;
 
 export default function Cart() {
   const navigate = useNavigate();
@@ -16,6 +20,7 @@ export default function Cart() {
   const fetchCart = async () => {
     try {
       setLoading(true);
+      setError('');
       const res = await getCart();
       setCart(res.data.products || []);
     } catch {
@@ -27,6 +32,7 @@ export default function Cart() {
 
   const handleRemove = async (productId) => {
     try {
+      setError('');
       await removeFromCart(productId);
       setMessage('Item removed');
       setTimeout(() => setMessage(''), 2000);
@@ -38,8 +44,9 @@ export default function Cart() {
 
   const handlePlaceOrder = async () => {
     try {
+      setError('');
       await placeOrder();
-      setMessage('Order placed successfully!');
+      setMessage('Order placed successfully');
       setCart([]);
       setTimeout(() => navigate('/orders'), 1500);
     } catch {
@@ -47,7 +54,9 @@ export default function Cart() {
     }
   };
 
-  const total = cart.reduce((sum, item) => sum + (item.productId?.price || 0) * item.quantity, 0);
+  const subtotal = cart.reduce((sum, item) => sum + (item.productId?.price || 0) * item.quantity, 0);
+  const deliveryFee = subtotal > 0 && subtotal < FREE_DELIVERY_THRESHOLD ? DELIVERY_FEE : 0;
+  const total = subtotal + deliveryFee;
 
   if (loading) {
     return (
@@ -87,7 +96,7 @@ export default function Cart() {
                   {item.productId?.images?.[0] ? (
                     <img
                       className="cart-item-image"
-                      src={`http://localhost:5000/uploads/${item.productId.images[0]}`}
+                      src={getUploadUrl(item.productId.images[0])}
                       alt={item.productId?.title}
                     />
                   ) : (

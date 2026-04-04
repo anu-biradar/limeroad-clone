@@ -19,12 +19,12 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/products" element={<Products />} />
         <Route path="/cart" element={
-          <ProtectedRoute>
+          <ProtectedRoute role="user">
             <Cart />
           </ProtectedRoute>
         } />
         <Route path="/orders" element={
-          <ProtectedRoute>
+          <ProtectedRoute role="user">
             <Orders />
           </ProtectedRoute>
         } />

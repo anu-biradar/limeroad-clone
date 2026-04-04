@@ -12,7 +12,7 @@ exports.addProduct = async (req, res) => {
     const category = req.body.category;
     const size = req.body.size;
 
-    const images = req.files ? req.files.map(file => file.filename) : [];
+    const images = req.files ? req.files.map(file => file.path) : [];
 
 
     const product = new Product({

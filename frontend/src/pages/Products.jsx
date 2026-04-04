@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { getAllProducts, getByCategory } from '../api/products';
 import { addToCart } from '../api/cart';
 import { useAuth } from '../hooks/useAuth';
+import { getUploadUrl } from '../api/axios';
 import './Products.css';
 
 const CATEGORIES = ['all', 'men', 'women', 'kids'];
@@ -23,6 +24,7 @@ export default function Products() {
   const fetchProducts = async (category) => {
     try {
       setLoading(true);
+      setError('');
       const res = category === 'all'
         ? await getAllProducts()
         : await getByCategory(category);
@@ -47,7 +49,7 @@ export default function Products() {
     }
     try {
       await addToCart(productId);
-      setMessage('Added to cart!');
+      setMessage('Added to cart');
       setTimeout(() => setMessage(''), 2000);
     } catch {
       setMessage('Failed to add to cart');
@@ -109,7 +111,7 @@ export default function Products() {
                   <div className="product-image-wrap">
                     {product.images?.[0] ? (
                       <img
-                        src={`http://localhost:5000/uploads/${product.images[0]}`}
+                        src={getUploadUrl(product.images[0])}
                         alt={product.title}
                       />
                     ) : (
