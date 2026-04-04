@@ -41,6 +41,13 @@ exports.getCart = async (req, res) => {
       "products.productId"
     );
 
+    if (!cart) {
+      return res.json({
+        userId: req.user.id,
+        products: [],
+        msg: "Cart is empty"
+      });
+    }
     res.json(cart);
   } catch (error) {
     res.status(500).json({ msg: "Server error" });
@@ -53,6 +60,9 @@ exports.removeFromCart = async (req, res) => {
     const { productId } = req.body;
 
     let cart = await Cart.findOne({ userId: req.user.id });
+
+    if (!cart) return res.status(404).json({ msg: "Cart not found" });
+
 
     cart.products = cart.products.filter(
       (p) => p.productId.toString() !== productId

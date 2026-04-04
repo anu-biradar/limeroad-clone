@@ -23,7 +23,11 @@ exports.placeOrder = async (req, res) => {
 
     const order = new Order({
       userId,
-      products: cart.products,
+      // ✅ Replace cart.products directly with this mapped version
+      products: cart.products.map((item) => ({
+        productId: item.productId._id,
+        quantity: item.quantity,
+      })),
       totalAmount,
     });
 

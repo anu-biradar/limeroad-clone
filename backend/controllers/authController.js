@@ -6,6 +6,12 @@ const jwt = require("jsonwebtoken");
 exports.register = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
+
+    // ✅ Only 2 roles allowed in this ecommerce app
+    if (role && role !== "user" && role !== "vendor") {
+      return res.status(400).json({ msg: "Invalid role. Only 'user' or 'vendor' allowed" });
+    }
+
     // check existing user
     let user = await User.findOne({ email });
     if (user) {
@@ -20,16 +26,17 @@ exports.register = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      role: role || "user"
+      role: role || "user",
     });
 
     await user.save();
 
-    res.status(201).json({ msg: "User registered successfully" });
-  }catch (error) {
-  console.error(error);
-  res.status(500).json({ msg: "Server error" });
-}
+    res.status(201).json({ msg: `Registered successfully as ${user.role}` });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "Server error" });
+  }
 };
 
 // LOGIN

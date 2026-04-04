@@ -1,0 +1,82 @@
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
+import { login } from '../api/auth';
+import { useAuth } from '../hooks/useAuth';
+import './Auth.css';
+
+export default function Login() {
+  const navigate = useNavigate();
+  const { loginUser } = useAuth();
+  const [form, setForm] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    try {
+      const res = await login(form);
+      const { role } = jwtDecode(res.data.token);
+      loginUser(res.data.token, role);
+      role === 'vendor' ? navigate('/vendor') : navigate('/products');
+    } catch (err) {
+      setError(err.response?.data?.msg || 'Login failed');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="auth-page">
+      <div className="auth-card">
+        <div className="auth-logo">
+          <span className="logo-lime">Lime</span><span className="logo-road">Road</span>
+        </div>
+        <h2 className="auth-title">Welcome Back</h2>
+        <p className="auth-subtitle">Sign in to continue shopping</p>
+
+        {error && <div className="auth-error">⚠️ {error}</div>}
+
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <div className="auth-input-group">
+            <label className="auth-label">Email</label>
+            <input
+              className="auth-input"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="auth-input-group">
+            <label className="auth-label">Password</label>
+            <input
+              className="auth-input"
+              name="password"
+              type="password"
+              placeholder="Enter your password"
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <button className="auth-submit-btn" type="submit" disabled={loading}>
+            {loading ? 'Signing in…' : 'Sign In →'}
+          </button>
+        </form>
+
+        <p className="auth-footer">
+          Don't have an account? <Link to="/register">Create one free</Link>
+        </p>
+      </div>
+    </div>
+  );
+}
