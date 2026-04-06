@@ -27,8 +27,8 @@ export default function Navbar() {
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar-inner">
         <Link to="/" className="navbar-logo">
-          <img src="/logo.png" alt="LimeRoad" className="navbar-logo-img" />
-          <span className="logo-lime">Lime</span><span className="logo-road">Road</span>
+          <img src="/logo.png" alt="TrendHub" className="navbar-logo-img" />
+          <span className="logo-lime">Trend</span><span className="logo-road">Hub</span>
         </Link>
 
         <nav className="navbar-links">

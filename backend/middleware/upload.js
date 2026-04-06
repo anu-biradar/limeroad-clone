@@ -11,7 +11,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "limeroad_clone",
+    folder: "trendhub",
     allowed_formats: ["jpg", "png", "jpeg", "webp"],
   },
 });

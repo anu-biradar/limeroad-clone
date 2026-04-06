@@ -1,6 +1,6 @@
-# Limeroad Clone
+# TrendHub
 
-A full-stack e-commerce application inspired by Limeroad, built using the MERN stack (MongoDB, Express, React, Node.js). It includes features for both regular users and vendors.
+A full-stack e-commerce application, built using the MERN stack (MongoDB, Express, React, Node.js). It includes features for both regular users and vendors.
 
 ## 🚀 Features
 
@@ -39,7 +39,7 @@ A full-stack e-commerce application inspired by Limeroad, built using the MERN s
 ## 📁 Project Structure
 
 ```
-limeroad-clone/
+TrendHub/
 ├── backend/       # Node.js + Express server
 │   ├── config/    # Database configurations
 │   ├── controllers/# Route controllers (Auth, Products, Cart, etc.)
@@ -87,13 +87,13 @@ VITE_API_BASE_URL=http://localhost:5000/api
 Clone the project
 
 ```bash
-  git clone https://github.com/anu-biradar/limeroad-clone.git
+  git clone https://github.com/anu-biradar/trendhub.git
 ```
 
 Navigate to the project directory
 
 ```bash
-  cd limeroad-clone
+  cd trendhub
 ```
 
 ### Setting up the Backend

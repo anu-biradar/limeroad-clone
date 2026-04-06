@@ -9,10 +9,10 @@ const categories = [
 ];
 
 const perks = [
-  { icon: '🚚', title: 'Free Delivery', desc: 'On orders above ₹499' },
-  { icon: '↩️', title: 'Easy Returns',  desc: '30-day hassle-free returns' },
-  { icon: '🔒', title: 'Secure Pay',    desc: '100% safe transactions' },
-  { icon: '🏷️', title: 'Best Prices',   desc: 'Direct from designers' },
+  { icon: '🏪', title: 'Vendor Portal', desc: 'Dedicated dashboards for sellers' },
+  { icon: '🛒', title: 'Smart Cart',    desc: 'Interactive shopping experience' },
+  { icon: '⚡', title: 'Cloud Media',   desc: 'Fast image delivery via Cloudinary' },
+  { icon: '🔐', title: 'Secure Access', desc: 'JWT & Role-based auth' },
 ];
 
 export default function Home() {
