@@ -44,8 +44,10 @@ export default function VendorDashboard() {
       setForm({ title: '', brand: '', price: '', category: 'men', size: '' });
       setImages([]);
       document.getElementById('imageInput').value = '';
-    } catch {
-      setError('Failed to add product');
+    } catch (err) {
+      console.error(err);
+      const errorMessage = err.response?.data?.msg || err.response?.data?.message || err.message || 'Failed to add product';
+      setError(`Error: ${errorMessage}`);
     } finally {
       setLoading(false);
     }
