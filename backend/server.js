@@ -45,4 +45,5 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`CORS Origin: ${process.env.FRONTEND_URL || "https://limeroad-clone.pages.dev"}`);
 });
