@@ -10,19 +10,28 @@ connectDB();
 const app = express();
 
 app.use(express.json());
-app.use(cors());
-app.use(cors({
-  origin: 'https://your-app.pages.dev', // your Cloudflare frontend URL
-  credentials: true
-}));
 
-// Middleware
+// ✅ Single CORS with correct Cloudflare URL
+app.use(cors({
+  origin: 'https://limeroad-clone.pages.dev',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.options('*', cors());
+
+// Routes
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/test", require("./routes/testRoutes"));
 app.use("/api/products", require("./routes/productRoutes"));
 app.use("/api/cart", require("./routes/cartRoutes"));
 app.use("/api/orders", require("./routes/orderRoutes"));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// Health check route
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
 
 // Test route
 app.get("/", (req, res) => {
