@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { getAllProducts, getByCategory } from '../api/products';
 import { addToCart } from '../api/cart';
 import { useAuth } from '../hooks/useAuth';
@@ -10,6 +10,7 @@ const CATEGORIES = ['all', 'men', 'women', 'kids'];
 
 export default function Products() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState([]);
   const [activeCategory, setActiveCategory] = useState(searchParams.get('category') || 'all');
@@ -107,7 +108,11 @@ export default function Products() {
             <p className="products-count">{products.length} product{products.length !== 1 && 's'} found</p>
             <div className="products-grid">
               {products.map((product) => (
-                <div key={product._id} className="product-card">
+                <div
+                  key={product._id}
+                  className="product-card"
+                  onClick={() => navigate(`/products/${product._id}`)}
+                >
                   <div className="product-image-wrap">
                     {product.images?.[0] ? (
                       <img

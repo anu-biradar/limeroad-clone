@@ -1,4 +1,5 @@
 const Product = require("../models/Product");
+const mongoose = require("mongoose");
 
 // ADD PRODUCT (Vendor only)
 exports.addProduct = async (req, res) => {
@@ -52,6 +53,42 @@ exports.getByCategory = async (req, res) => {
       category: req.params.category,
     });
     res.json(products);
+  } catch (error) {
+    res.status(500).json({ msg: "Server error" });
+  }
+};
+
+// GET SINGLE PRODUCT BY ID
+exports.getProductById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid product ID" });
+    }
+    const product = await Product.findById(id);
+    if (!product) return res.status(404).json({ msg: "Product not found" });
+    res.json(product);
+  } catch (error) {
+    res.status(500).json({ msg: "Server error" });
+  }
+};
+
+// GET SUGGESTED PRODUCTS (same category, excluding current)
+exports.getSuggestedProducts = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid product ID" });
+    }
+    const product = await Product.findById(id);
+    if (!product) return res.status(404).json({ msg: "Product not found" });
+
+    const suggested = await Product.find({
+      category: product.category,
+      _id: { $ne: product._id },
+    }).limit(8);
+
+    res.json(suggested);
   } catch (error) {
     res.status(500).json({ msg: "Server error" });
   }

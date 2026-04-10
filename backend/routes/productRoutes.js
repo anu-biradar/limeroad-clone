@@ -10,6 +10,8 @@ const {
   addProduct,
   getProducts,
   getByCategory,
+  getProductById,
+  getSuggestedProducts,
 } = require("../controllers/productController");
 
 
@@ -23,6 +25,12 @@ router.post(
 
 // get all
 router.get("/", getProducts);
+
+// single product by ID (must be before /:category to avoid conflict)
+router.get("/id/:id", getProductById);
+
+// suggested products (same category)
+router.get("/id/:id/suggested", getSuggestedProducts);
 
 // category filter
 router.get("/:category", getByCategory);
